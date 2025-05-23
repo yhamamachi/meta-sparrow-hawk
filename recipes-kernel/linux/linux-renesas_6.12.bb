@@ -25,6 +25,10 @@ SRC_URI:append:sparrow-hawk = " \
     file://0001-arm64-dts-renesas-sparrow-hawk-Enable-I2C3-I2C4.patch \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
 "
+# Patchset for power management
+SRC_URI:append:sparrow-hawk = " \
+    file://0001-drivers-clk-r8a779g0-cpg-mssr-backport-from-BSP-.patch \
+"
 # UIO driver patchset
 SRC_URI:append:sparrow-hawk = " \
     file://uio/0001-uio-Add-new-ioctl-for-power-management.patch \
