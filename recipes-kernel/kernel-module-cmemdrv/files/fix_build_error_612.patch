@@ -1,0 +1,66 @@
+diff --git a/cmemdrv.c b/cmemdrv.c
+index 1dbab5b..2837d8e 100644
+--- a/cmemdrv.c
++++ b/cmemdrv.c
+@@ -70,6 +70,7 @@
+ #include <linux/types.h>
+ #include <linux/of_address.h>
+ #include <linux/of_reserved_mem.h>
++#include <linux/mm.h>
+ 
+ #include "cmemdrv.h"
+ 
+@@ -120,23 +121,23 @@ static struct mem_area_data *cmem_areas[MAX_AREA_NUM];
+ static int cv_v_to_p(unsigned long vaddr, unsigned long *paddr)
+ {
+ 	struct vm_area_struct *vma;
+-	unsigned long start, offset;
+-	unsigned long pfn;
+ 	int ret;
+-
++        struct page *pages;
++        struct mm_struct *mm = current->mm;
+ 	*paddr = 0;
+ 
+-	vma = find_vma(current->active_mm, vaddr);
+-	if (vma == NULL)
++        if (!mm)
++            return -EFAULT;
++
++	vma = find_vma(mm, vaddr);
++	if (!vma || vaddr < vma->vm_start)
+ 		return -EINVAL;
+ 
+-	start = vaddr & PAGE_MASK;
+-	ret = follow_pfn(vma, start, &pfn);
++        ret = pin_user_pages(vaddr, 1, FOLL_WRITE, &pages);
+ 	if (ret < 0)
+ 		return ret;
+-
+-	offset = offset_in_page(vaddr);
+-	*paddr = (pfn << PAGE_SHIFT) + offset;
++        *paddr = page_to_phys(pages);
++        unpin_user_pages(&pages, 1);
+ 
+ 	return 0;
+ }
+@@ -310,7 +311,9 @@ static int dev_mmap(struct file *filep, struct vm_area_struct *vma)
+ 
+ 	off += start;
+ 	vma->vm_pgoff = off >> PAGE_SHIFT;
+-	vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
++	//vma->vm_flags |= VM_DONTEXPAND | VM_DONTDUMP;
++        vm_flags_set(vma, VM_DONTEXPAND | VM_DONTDUMP);
++        //vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
+ 	if (!cached)
+ 		vma->vm_page_prot = pgprot_noncached(vma->vm_page_prot);
+ 
+@@ -539,7 +542,7 @@ static int __init cmemdrv_init(void)
+ 	if (cmem_major == 0)
+ 		cmem_major = ret;
+ 
+-	cmem_class = class_create(THIS_MODULE, "cmem");
++	cmem_class = class_create("cmem");
+ 	if (IS_ERR(cmem_class)) {
+ 		pr_err("cmem: unable to create class\n");
+ 		ret = PTR_ERR(cmem_class);

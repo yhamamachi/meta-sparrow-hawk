@@ -45,6 +45,7 @@ QOS_USER_PKGS:aarch64-poky-linux = " \
 # Installation for QoS packages
 IMAGE_INSTALL:append = " \
     kernel-module-qos \
+    kernel-module-cmemdrv \
     ${QOS_USER_PKGS} \
 "
 
