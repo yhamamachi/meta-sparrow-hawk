@@ -23,6 +23,10 @@ UBOOT_SREC ?= "u-boot-elf.${UBOOT_SREC_SUFFIX}"
 UBOOT_SREC_IMAGE ?= "u-boot-elf-${MACHINE}-${PV}-${PR}.${UBOOT_SREC_SUFFIX}"
 UBOOT_SREC_SYMLINK ?= "u-boot-elf-${MACHINE}.${UBOOT_SREC_SUFFIX}"
 
+SRC_URI:append = "\
+    file://0001-sparrow-hawk-Add-support-for-Winbond-SPI-Flash.patch \
+"
+
 do_deploy:append() {
     if [ -n "${UBOOT_CONFIG}" ]
     then
