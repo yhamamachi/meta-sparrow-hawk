@@ -24,7 +24,10 @@ UBOOT_SREC_IMAGE ?= "u-boot-elf-${MACHINE}-${PV}-${PR}.${UBOOT_SREC_SUFFIX}"
 UBOOT_SREC_SYMLINK ?= "u-boot-elf-${MACHINE}.${UBOOT_SREC_SUFFIX}"
 
 SRC_URI:append = "\
-    file://0001-sparrow-hawk-Add-support-for-Winbond-SPI-Flash.patch \
+    file://0001-mtd-spi-nor-ids-Add-support-for-Winbond-W77Q51NW.patch \
+    file://0002-arm64-dts-renesas-r8a779g3-Describe-generic-SPI-NOR-.patch \
+    file://0003-arm64-renesas-r8a779g3-Enable-Winbond-SPI-NOR-suppor.patch \
+    file://0004-arm64-renesas-r8a779g3-Disable-MicroSD-UHS-modes-on-.patch \
 "
 
 do_deploy:append() {

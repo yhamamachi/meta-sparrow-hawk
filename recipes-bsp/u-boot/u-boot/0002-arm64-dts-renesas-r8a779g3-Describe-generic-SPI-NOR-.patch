@@ -1,0 +1,36 @@
+From 15bb6c4d6993f3ed6d5d91aec39a44612cd22544 Mon Sep 17 00:00:00 2001
+From: Marek Vasut <marek.vasut+renesas@mailbox.org>
+Date: Thu, 10 Jul 2025 19:54:58 +0200
+Subject: [PATCH 2/4] arm64: dts: renesas: r8a779g3: Describe generic SPI NOR
+ support on Retronix R-Car V4H Sparrow Hawk board
+
+Retronix R-Car V4H Sparrow Hawk EVTA1 is populated with Spansion S25FS512S,
+EVTB1 is populated with Winbond W77Q51NW. Describe the SPI NOR using generic
+"spi-flash" compatible, because both flashes can be auto-detected based on
+their built-in IDs.
+
+Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
+---
+ dts/upstream/src/arm64/renesas/r8a779g3-sparrow-hawk.dts | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/dts/upstream/src/arm64/renesas/r8a779g3-sparrow-hawk.dts b/dts/upstream/src/arm64/renesas/r8a779g3-sparrow-hawk.dts
+index b109095a..a0fda441 100644
+--- a/dts/upstream/src/arm64/renesas/r8a779g3-sparrow-hawk.dts
++++ b/dts/upstream/src/arm64/renesas/r8a779g3-sparrow-hawk.dts
+@@ -623,7 +623,11 @@
+ 	status = "okay";
+ 
+ 	flash@0 {
+-		compatible = "spansion,s25fs512s", "jedec,spi-nor";
++		/*
++		 * EVTA1 is populated with Spansion S25fS512S
++		 * EVTB1 is populated with Winbond W77Q51NW
++		 */
++		compatible = "jedec,spi-nor";
+ 		reg = <0>;
+ 		spi-max-frequency = <40000000>;
+ 		spi-rx-bus-width = <4>;
+-- 
+2.34.1
+
