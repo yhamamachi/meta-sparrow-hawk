@@ -1,0 +1,31 @@
+From 6d3f02770e6ba6b8f51ccd9e46128a1457109766 Mon Sep 17 00:00:00 2001
+From: Marek Vasut <marek.vasut+renesas@mailbox.org>
+Date: Fri, 11 Jul 2025 20:40:44 +0200
+Subject: [PATCH 6/9] FIXME: mtd: spi-nor-ids: Add 4B opcode support for
+ Winbond W77Q51NW
+
+The W77Q51NW does support native 4-Byte addressing opcodes,
+there is no need to send EN4B/EX4B opcodes which switch the
+standard SPI NOR commands into 4-Byte address mode and back.
+
+Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
+---
+ drivers/mtd/spi/spi-nor-ids.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/mtd/spi/spi-nor-ids.c b/drivers/mtd/spi/spi-nor-ids.c
+index f6ae0ff5a50..0383175beb5 100644
+--- a/drivers/mtd/spi/spi-nor-ids.c
++++ b/drivers/mtd/spi/spi-nor-ids.c
+@@ -591,7 +591,7 @@ const struct flash_info spi_nor_ids[] = {
+ 	{ INFO("w25m512jw", 0xef6119, 0, 64 * 1024, 1024, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ INFO("w25m512jv", 0xef7119, 0, 64 * 1024, 1024, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+ 	{ INFO("w25h02jv", 0xef9022, 0, 64 * 1024, 4096, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
+-	{ INFO("w77q51nw", 0xef8a1a, 0, 64 * 1024, 1024, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ) },
++	{ INFO("w77q51nw", 0xef8a1a, 0, 64 * 1024, 1024, SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ | SPI_NOR_4B_OPCODES) },
+ #endif
+ #ifdef CONFIG_SPI_FLASH_XMC
+ 	/* XMC (Wuhan Xinxin Semiconductor Manufacturing Corp.) */
+-- 
+2.34.1
+

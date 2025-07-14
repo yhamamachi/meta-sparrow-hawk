@@ -1,7 +1,7 @@
-From eead61982365940fa9c8bba91b0583c4db6be926 Mon Sep 17 00:00:00 2001
+From bf5ae9e2d63c18c796586cd7d5ddbe86ef192c68 Mon Sep 17 00:00:00 2001
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 Date: Thu, 10 Jul 2025 19:48:00 +0200
-Subject: [PATCH 1/4] mtd: spi-nor-ids: Add support for Winbond W77Q51NW
+Subject: [PATCH 1/9] mtd: spi-nor-ids: Add support for Winbond W77Q51NW
 
 Add IDs for Winbond W77Q51NW, 512M-bit Secure Serial Flash Memory
 with Post-Quantum Cryptography, Dual/Quad SPI, QPI and DTR . The
@@ -9,11 +9,20 @@ flash part seems to be similar to W25Q512NWM .
 
 Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
 ---
+Cc: Jagan Teki <jagan@amarulasolutions.com>
+Cc: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Cc: Takahiro Kuwano <Takahiro.Kuwano@infineon.com>
+Cc: Tom Rini <trini@konsulko.com>
+Cc: Tudor Ambarus <tudor.ambarus@linaro.org>
+Cc: Venkatesh Yadav Abbarapu <venkatesh.abbarapu@amd.com>
+Cc: Vignesh R <vigneshr@ti.com>
+Cc: u-boot@lists.denx.de
+---
  drivers/mtd/spi/spi-nor-ids.c | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/mtd/spi/spi-nor-ids.c b/drivers/mtd/spi/spi-nor-ids.c
-index e7e97780..f6ae0ff5 100644
+index e7e97780d7c..f6ae0ff5a50 100644
 --- a/drivers/mtd/spi/spi-nor-ids.c
 +++ b/drivers/mtd/spi/spi-nor-ids.c
 @@ -591,6 +591,7 @@ const struct flash_info spi_nor_ids[] = {

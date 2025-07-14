@@ -1,7 +1,7 @@
-From 5963a48fe39b2884e7aa7416e174aad0c472682c Mon Sep 17 00:00:00 2001
+From 1d298309477439c493881f7a1ac8fa0afc1ac076 Mon Sep 17 00:00:00 2001
 From: Marek Vasut <marek.vasut+renesas@mailbox.org>
 Date: Thu, 10 Jul 2025 22:10:13 +0200
-Subject: [PATCH 4/4] arm64: renesas: r8a779g3: Disable MicroSD UHS modes on
+Subject: [PATCH 4/9] arm64: renesas: r8a779g3: Disable MicroSD UHS modes on
  Retronix R-Car V4H Sparrow Hawk EVTA1
 
 The Retronix R-Car V4H Sparrow Hawk old revision EVTA1 does not have MicroSD
@@ -24,11 +24,15 @@ and newer revisions of the board which are actually available.
 
 Signed-off-by: Marek Vasut <marek.vasut+renesas@mailbox.org>
 ---
+Cc: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>
+Cc: Tom Rini <trini@konsulko.com>
+Cc: u-boot@lists.denx.de
+---
  board/renesas/sparrowhawk/sparrowhawk.c | 114 ++++++++++++++++++++++++
  1 file changed, 114 insertions(+)
 
 diff --git a/board/renesas/sparrowhawk/sparrowhawk.c b/board/renesas/sparrowhawk/sparrowhawk.c
-index 8e72b542..871dad81 100644
+index 8e72b5424d1..871dad8172a 100644
 --- a/board/renesas/sparrowhawk/sparrowhawk.c
 +++ b/board/renesas/sparrowhawk/sparrowhawk.c
 @@ -6,8 +6,12 @@
