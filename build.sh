@@ -107,10 +107,14 @@ SPDX_ARCHIVE_SOURCES = "1"
 # optional. if "1", bitbake will create output binary archive for each package.
 SPDX_ARCHIVE_PACKAGED = "1"
 EOS
-else # Disable SBOM build to reduce build time
+else
 cat << EOS >> conf/local.conf
-# Disable create-spdx
+# Disable create-spdx to reduce the build time
 INHERIT:remove = "create-spdx"
+IMAGE_INSTALL:append = " git gcc g++ make curl cmake openssl libffi libnsl2"
+IMAGE_INSTALL:append = " binutils patch zlib-dev libffi-dev openssl-dev bzip2 readline sqlite3 ncurses tar patch"
+IMAGE_FEATURES += "dev-pkgs tools-sdk"
+IMAGE_INSTALL:append = " zsh vim"
 EOS
 fi
 

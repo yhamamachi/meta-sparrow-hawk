@@ -1049,51 +1049,51 @@
 		linux,uio-name = "tisp_01";
 	};
 
-	vspx0: vspx@fedd0000 {
-		compatible = "generic-uio";
-		reg = <0 0xfedd0000 0 0x8000>;
-		interrupts = <GIC_SPI 556 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 1028>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
-		resets = <&cpg 1028>;
-		linux,uio-name = "vspx_00";
-		ipmmu-id = <RCAR_IPMMU_VI1 24>;
-		iommus = <&ipmmu_vi1 24>;
-	};
-
-	vspx1: vspx@fedd8000 {
-		compatible = "generic-uio";
-		reg = <0 0xfedd8000 0 0x8000>;
-		interrupts = <GIC_SPI 557 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 1029>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
-		resets = <&cpg 1029>;
-		linux,uio-name = "vspx_01";
-		ipmmu-id = <RCAR_IPMMU_VI1 25>;
-		iommus = <&ipmmu_vi1 25>;
-	};
-
-	fcpvx0: fcpvs@fedb0000 {
-		compatible = "generic-uio";
-		reg = <0 0xfedb0000 0 0x8000>;
-		clocks =<&cpg CPG_MOD 1100>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
-		resets = <&cpg 1100>;
-		linux,uio-name = "fcpvx_00";
-		ipmmu-id = <RCAR_IPMMU_VI1 24>;
-		iommus = <&ipmmu_vi1 24>;
-	};
-
-	fcpvx1: fcpvs@fedb8000 {
-		compatible = "generic-uio";
-		reg = <0 0xfedb8000 0 0x8000>;
-		clocks =<&cpg CPG_MOD 1101>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
-		resets = <&cpg 1101>;
-		linux,uio-name = "fcpvx_01";
-		ipmmu-id = <RCAR_IPMMU_VI1 25>;
-		iommus = <&ipmmu_vi1 25>;
-	};
+//	vspx0: vspx@fedd0000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfedd0000 0 0x8000>;
+//		interrupts = <GIC_SPI 556 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 1028>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
+//		resets = <&cpg 1028>;
+//		linux,uio-name = "vspx_00";
+//		ipmmu-id = <RCAR_IPMMU_VI1 24>;
+//		iommus = <&ipmmu_vi1 24>;
+//	};
+//
+//	vspx1: vspx@fedd8000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfedd8000 0 0x8000>;
+//		interrupts = <GIC_SPI 557 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 1029>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
+//		resets = <&cpg 1029>;
+//		linux,uio-name = "vspx_01";
+//		ipmmu-id = <RCAR_IPMMU_VI1 25>;
+//		iommus = <&ipmmu_vi1 25>;
+//	};
+//
+//	fcpvx0: fcpvs@fedb0000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfedb0000 0 0x8000>;
+//		clocks =<&cpg CPG_MOD 1100>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
+//		resets = <&cpg 1100>;
+//		linux,uio-name = "fcpvx_00";
+//		ipmmu-id = <RCAR_IPMMU_VI1 24>;
+//		iommus = <&ipmmu_vi1 24>;
+//	};
+//
+//	fcpvx1: fcpvs@fedb8000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfedb8000 0 0x8000>;
+//		clocks =<&cpg CPG_MOD 1101>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
+//		resets = <&cpg 1101>;
+//		linux,uio-name = "fcpvx_01";
+//		ipmmu-id = <RCAR_IPMMU_VI1 25>;
+//		iommus = <&ipmmu_vi1 25>;
+//	};
 
 	gsx: gsx@fd000000 {
 		compatible = "renesas,gsx";

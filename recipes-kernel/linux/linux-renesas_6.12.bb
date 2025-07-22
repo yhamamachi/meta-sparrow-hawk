@@ -46,6 +46,9 @@ do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
     echo "" >> ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
     cat ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-uio.dtso >> ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
+    # WIP
+    sed -i ${S}/drivers/usb/host/xhci-pci-renesas.c -e "s/\t10000/\t100000/"
+    sed -i ${S}/drivers/usb/host/xhci-pci-renesas.c -e '1i#define DEBUG'
 }
 
 do_src_package_preprocess () {
