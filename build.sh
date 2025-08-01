@@ -112,7 +112,8 @@ cat << EOS >> conf/local.conf
 # Disable create-spdx to reduce the build time
 INHERIT:remove = "create-spdx"
 IMAGE_INSTALL:append = " git gcc g++ make curl cmake openssl libffi libnsl2"
-IMAGE_INSTALL:append = " binutils patch zlib-dev libffi-dev openssl-dev bzip2 readline sqlite3 ncurses tar patch"
+IMAGE_INSTALL:append = " binutils patch zlib-dev libffi-dev openssl-dev bzip2 readline sqlite3 ncurses tar patch "
+IMAGE_INSTALL:append = " llvm llvm-dev llvm-staticdev"
 IMAGE_FEATURES += "dev-pkgs tools-sdk"
 IMAGE_INSTALL:append = " zsh vim"
 EOS
