@@ -1,0 +1,15 @@
+
+/ {
+    reserved-memory {
+        #address-cells = <2>;
+        #size-cells = <2>;
+        ranges;
+
+        pcie_fw: memory@54000000 {
+            reg = <0x0 0x54000000 0x0 0x00008000>; // 32768=0x8000 bytes
+            // no-map; // no-map is not used for using phys_to_virt
+        };
+    };
+};
+
+

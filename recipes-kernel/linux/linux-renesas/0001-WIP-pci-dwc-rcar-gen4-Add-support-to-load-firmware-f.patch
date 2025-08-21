@@ -1,0 +1,72 @@
+From 4431c831c6590a289f0814f8a8c4fe17f7d9e0e7 Mon Sep 17 00:00:00 2001
+From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+Date: Thu, 21 Aug 2025 12:39:01 +0900
+Subject: [PATCH] WIP: pci: dwc: rcar-gen4: Add support to load firmware from
+ RAM
+
+Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c | 29 ++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+index 042c9dd6c6b6..628fbb8fd4db 100644
+--- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
++++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
+@@ -86,6 +86,14 @@ struct rcar_gen4_pcie {
+ };
+ #define to_rcar_gen4_pcie(_dw)	container_of(_dw, struct rcar_gen4_pcie, dw)
+ 
++static unsigned long fw_ram_addr = 0x0;
++module_param(fw_ram_addr, ulong, 0644);
++MODULE_PARM_DESC(fw_ram_addr, "RAM address for PCIe firmware");
++
++static unsigned int fw_size = 32768; // 0x8000
++module_param(fw_size, uint, 0644);
++MODULE_PARM_DESC(fw_size, "Binary size for PCIe firmware");
++
+ /* Common */
+ static int rcar_gen4_pcie_link_up(struct dw_pcie *dw)
+ {
+@@ -617,15 +625,23 @@ static int rcar_gen4_pcie_download_phy_firmware(struct rcar_gen4_pcie *rcar)
+ 	};
+ 	struct dw_pcie *dw = &rcar->dw;
+ 	const struct firmware *fw;
++	struct firmware _tmp_fw; // for allocate memory
+ 	unsigned int i, timeout;
+ 	u32 data;
+ 	int ret;
+ 
+-	ret = request_firmware(&fw, RCAR_GEN4_PCIE_FIRMWARE_NAME, dw->dev);
+-	if (ret) {
+-		dev_err(dw->dev, "Failed to load firmware (%s): %d\n",
+-			RCAR_GEN4_PCIE_FIRMWARE_NAME, ret);
+-		return ret;
++	if (fw_ram_addr) {
++		_tmp_fw.data = phys_to_virt(fw_ram_addr);
++		_tmp_fw.size = fw_size;
++		fw = &_tmp_fw;
++	}
++	else {
++		ret = request_firmware(&fw, RCAR_GEN4_PCIE_FIRMWARE_NAME, dw->dev);
++		if (ret) {
++			dev_err(dw->dev, "Failed to load firmware (%s): %d\n",
++				RCAR_GEN4_PCIE_FIRMWARE_NAME, ret);
++			return ret;
++		}
+ 	}
+ 
+ 	for (i = 0; i < (fw->size / 2); i++) {
+@@ -663,7 +679,8 @@ static int rcar_gen4_pcie_download_phy_firmware(struct rcar_gen4_pcie *rcar)
+ 	}
+ 
+ exit:
+-	release_firmware(fw);
++	if (!fw_ram_addr)
++		release_firmware(fw);
+ 
+ 	return ret;
+ }
+-- 
+2.34.1
+

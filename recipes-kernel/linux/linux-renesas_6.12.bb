@@ -25,12 +25,17 @@ FILESEXTRAPATHS:prepend:sparrow-hawk = "${TOPDIR}/../../firmware:"
 SRC_URI:append:sparrow-hawk = " \
     file://sparrow_hawk.cfg \
     file://sparrow-hawk-enable-i2c3-i2c4.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
+    file://sparrow-hawk-reserved_memory_pcie_fw.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0001-HACK-arm64-dts-renesas-r8a779g3-sparrow-hawk-Remove-.patch \
     file://sparrow-hawk-enable-j1-imx219.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://sparrow-hawk-enable-j2-imx219.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://sparrow-hawk-enable-j1-imx462.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://sparrow-hawk-enable-j2-imx462.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
+SRC_URI:append:sparrow-hawk = " \
+    file://0001-WIP-pci-dwc-rcar-gen4-Add-support-to-load-firmware-f.patch \
+"
+
 KBUILD_DEFCONFIG:sparrow-hawk = "renesas_defconfig"
 KERNEL_DEVICETREE:append:sparrow-hawk = " \
     renesas/r8a779g3-sparrow-hawk-fan-pwm.dtbo \
@@ -43,6 +48,7 @@ KERNEL_DEVICETREE:append:sparrow-hawk = " \
 
 do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
+    echo '#include "sparrow-hawk-reserved_memory_pcie_fw.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
 }
 
 do_src_package_preprocess () {
