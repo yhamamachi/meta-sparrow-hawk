@@ -25,6 +25,8 @@ S = "${WORKDIR}/git"
 
 SRC_URI:append:sparrow-hawk = " \
     file://fix_build_error_612.patch \
+    file://0001-WIP-Fix-DMA-mask-not-set.patch \
+    file://0002-Fix-allocation-of-cmem-_other-regions.patch \
 "
 
 FILES:${PN}:append = " \
