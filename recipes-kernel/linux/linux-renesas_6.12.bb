@@ -79,3 +79,4 @@ do_deploy:append() {
         rm -f $deployDir/$dtb_base_name-${KERNEL_DTB_LINK_NAME}.$dtb_ext
     done
 }
+
