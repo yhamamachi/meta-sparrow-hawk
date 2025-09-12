@@ -27,6 +27,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://sparrow-hawk-enable-i2c3-i2c4.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://r8a779g3-sparrow-hawk-uio.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0001-WIP-drivers-clk-r8a779g0-cpg-mssr-backport-from-BSP-.patch \
+    file://0001-WIP-driver-pmdomain-r8a779g0-Backport-update.patch \
 "
 KBUILD_DEFCONFIG:sparrow-hawk = "renesas_defconfig"
 KERNEL_DEVICETREE:append:sparrow-hawk = " \
@@ -45,6 +46,8 @@ module_conf_uio_pdrv_genirq:append = ' options uio_pdrv_genirq of_id="generic-ui
 do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
     echo "" >> ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
+    sed -i '/iommus/d'  ${S}/arch/arm64/boot/dts/renesas/r8a779g0.dtsi
+    sed -i '/&ipmmu_/d'  ${S}/arch/arm64/boot/dts/renesas/r8a779g0.dtsi
     cat ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk-uio.dtso >> ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
     # WIP
     sed -i ${S}/drivers/usb/host/xhci-pci-renesas.c -e "s/\t10000/\t100000/"
