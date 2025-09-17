@@ -53,12 +53,16 @@
 &ipmmu_vip0 { status = "disabled"; };
 &ipmmu_vip1 { status = "disabled"; };
 
-&fcpvd0 { status = "disabled"; };
-&fcpvd1 { status = "disabled"; };
-&fcpvx0 { status = "disabled"; };
-&fcpvx1 { status = "disabled"; };
+//&fcpvd0 { status = "disabled"; };
+//&fcpvd1 { status = "disabled"; };
+//&fcpvx0 { status = "disabled"; };
+//&fcpvx1 { status = "disabled"; };
+
+//&vspx0 { status = "disabled"; };
+//&vspx1 { status = "disabled"; };
 
 &soc {
+/*
 		vspd0: vsp@fea20000 {
 			compatible = "renesas,vsp2", "generic-uio";
 			reg = <0 0xfea20000 0 0x8000>;
@@ -135,36 +139,6 @@
 			interrupts = <GIC_SPI 524 IRQ_TYPE_LEVEL_HIGH>;
 			linux,uio-name = "irq_du_00_01";
 		};
-
-		dsi0: dsi-encoder@fed80000 {
-			compatible = "renesas,r8a779g0-mipi-dsi";
-			reg = <0 0xfed80000 0 0x10000>;
-			power-domains = <&sysc R8A779G0_PD_ALWAYS_ON>;
-			clocks = <&cpg CPG_MOD 415>,
-				 <&cpg CPG_CORE R8A779G0_CLK_DSIEXT>;
-			clock-names = "mod", "dsi";
-			resets = <&cpg 415>;
-			status = "disabled";
-
-			ports {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				port@0 {
-					reg = <0>;
-					dsi0_in: endpoint {
-						remote-endpoint = <&du_out_dsi0>;
-					};
-				};
-
-				port@1 {
-					reg = <1>;
-					dsi0_out: endpoint {
-					};
-				};
-			};
-		};
-
 		dsc: stream-compression@feb8d000 {
 			compatible = "renesas,r8a779g0-dsc";
 			reg = <0 0xfeb8d000 0 0x300>;
@@ -192,35 +166,6 @@
 				};
 			};
 
-		};
-
-		dsi1: dsi-encoder@fed90000 {
-			compatible = "renesas,r8a779g0-mipi-dsi";
-			reg = <0 0xfed90000 0 0x10000>;
-			power-domains = <&sysc R8A779G0_PD_ALWAYS_ON>;
-			clocks = <&cpg CPG_MOD 416>,
-				 <&cpg CPG_CORE R8A779G0_CLK_DSIEXT>;
-			clock-names = "mod", "dsi";
-			resets = <&cpg 416>;
-			status = "disabled";
-
-			ports {
-				#address-cells = <1>;
-				#size-cells = <0>;
-
-				port@0 {
-					reg = <0>;
-					dsi1_in: endpoint {
-						remote-endpoint = <&dsc_out>;
-					};
-				};
-
-				port@1 {
-					reg = <1>;
-					dsi1_out: endpoint {
-					};
-				};
-			};
 		};
 
 		dsi0 {
@@ -399,7 +344,7 @@
 			resets = <&cpg 2819>;
 			linux,uio-name = "dsc_00";
 		};
-
+*/
 	imrlx6_ims0: ims@fe860000 {
 		compatible = "generic-uio";
 		reg = <0 0xfe860000 0 0x10000>;
@@ -1408,6 +1353,7 @@
 		linux,uio-name = "tisp_01";
 	};
 
+/* vspx*u, fcpvxu* are used in ISP(Libcamera)
 	vspx0u: vspx@fedd0000 {
 		compatible = "generic-uio";
 		reg = <0 0xfedd0000 0 0x8000>;
@@ -1453,7 +1399,7 @@
 		ipmmu-id = <RCAR_IPMMU_VI1 25>;
 		iommus = <&ipmmu_vi1 25>;
 	};
-
+*/
 	gsx: gsx@fd000000 {
 		compatible = "renesas,gsx";
 		reg = <0 0xfd000000 0 0x800000>;
