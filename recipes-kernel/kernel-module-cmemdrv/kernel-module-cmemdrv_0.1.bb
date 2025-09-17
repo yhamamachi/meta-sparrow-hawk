@@ -27,6 +27,8 @@ SRC_URI:append:sparrow-hawk = " \
     file://fix_build_error_612.patch \
     file://0001-WIP-Fix-DMA-mask-not-set.patch \
     file://0002-Fix-allocation-of-cmem-_other-regions.patch \
+    file://0001-Fix-bit_ranges-is-not-correct-value.patch \
+    file://0001-WIP-Use-physical-address-directly.patch \
 "
 
 FILES:${PN}:append = " \
