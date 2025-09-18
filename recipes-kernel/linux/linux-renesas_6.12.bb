@@ -28,6 +28,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://r8a779g3-sparrow-hawk-uio.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0001-WIP-drivers-clk-r8a779g0-cpg-mssr-backport-from-BSP-.patch \
     file://0001-WIP-driver-pmdomain-r8a779g0-Backport-update.patch \
+    file://0001-WIP-Disable-DSI0.patch \
 "
 # UIO driver patchset
 SRC_URI:append:sparrow-hawk = " \

@@ -1,0 +1,43 @@
+From 49e5b8f9c45bee6d7cc072560a3254a209b20315 Mon Sep 17 00:00:00 2001
+From: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+Date: Wed, 17 Sep 2025 19:10:33 +0900
+Subject: [PATCH] WIP: Disable DSI0
+
+Signed-off-by: Yuya Hamamachi <yuya.hamamachi.sx@renesas.com>
+---
+ arch/arm64/boot/dts/renesas/r8a779g0.dtsi | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/renesas/r8a779g0.dtsi b/arch/arm64/boot/dts/renesas/r8a779g0.dtsi
+index 744b482e9ff3..00c9d825d229 100644
+--- a/arch/arm64/boot/dts/renesas/r8a779g0.dtsi
++++ b/arch/arm64/boot/dts/renesas/r8a779g0.dtsi
+@@ -2272,18 +2272,19 @@ ports {
+ 				#size-cells = <0>;
+ 
+ 				port@0 {
++					reg = <1>;
++					du_out_dsi1: endpoint {
++						remote-endpoint = <&dsi1_in>;
++					};
++				};
++
++				port@1 {
+ 					reg = <0>;
+ 					du_out_dsi0: endpoint {
+ 						remote-endpoint = <&dsi0_in>;
+ 					};
+ 				};
+ 
+-				port@1 {
+-					reg = <1>;
+-					du_out_dsi1: endpoint {
+-						remote-endpoint = <&dsi1_in>;
+-					};
+-				};
+ 			};
+ 		};
+ 
+-- 
+2.34.1
+
