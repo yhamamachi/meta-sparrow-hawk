@@ -53,14 +53,6 @@
 &ipmmu_vip0 { status = "disabled"; };
 &ipmmu_vip1 { status = "disabled"; };
 
-//&fcpvd0 { status = "disabled"; };
-//&fcpvd1 { status = "disabled"; };
-//&fcpvx0 { status = "disabled"; };
-//&fcpvx1 { status = "disabled"; };
-
-//&vspx0 { status = "disabled"; };
-//&vspx1 { status = "disabled"; };
-
 &soc {
 /*
 		vspd0: vsp@fea20000 {
@@ -1305,53 +1297,53 @@
 			<&ipmmu_vi0 1>;
 	};
 
-	cisp0: cisp@fec00000 {
-		compatible = "generic-uio";
-		reg = <0 0xfec00000 0 0x100000>;
-		interrupts = <GIC_SPI 475 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 16>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
-		resets = <&cpg 16>;
-		linux,uio-name = "cisp_00";
-		ipmmu-id = <RCAR_IPMMU_VI0 10>;
-		iommus = <&ipmmu_vi0 10>, <&ipmmu_vi0 14>,
-			 <&ipmmu_vi0 18>, <&ipmmu_vi0 22>,
-			 <&ipmmu_vi0 26>;
-	};
-
-	tisp0: tisp@fed00000 {
-		compatible = "generic-uio";
-		reg = <0 0xfed00000 0 0x10000>;
-		interrupts = <GIC_SPI 473 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 612>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
-		resets = <&cpg 612>;
-		linux,uio-name = "tisp_00";
-	};
-
-	cisp1: cisp@fee00000 {
-		compatible = "generic-uio";
-		reg = <0 0xfee00000 0 0x100000>;
-		interrupts = <GIC_SPI 476 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 17>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
-		resets = <&cpg 17>;
-		linux,uio-name = "cisp_01";
-		ipmmu-id = <RCAR_IPMMU_VI0 11>;
-		iommus = <&ipmmu_vi0 11>, <&ipmmu_vi0 15>,
-			 <&ipmmu_vi0 19>, <&ipmmu_vi0 23>,
-			 <&ipmmu_vi0 27>; 
-	};
-
-	tisp1: tisp@fed20000 {
-		compatible = "generic-uio";
-		reg = <0 0xfed20000 0 0x10000>;
-		interrupts = <GIC_SPI 474 IRQ_TYPE_LEVEL_HIGH>;
-		clocks = <&cpg CPG_MOD 613>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
-		resets = <&cpg 613>;
-		linux,uio-name = "tisp_01";
-	};
+//	cisp0: cisp@fec00000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfec00000 0 0x100000>;
+//		interrupts = <GIC_SPI 475 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 16>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
+//		resets = <&cpg 16>;
+//		linux,uio-name = "cisp_00";
+//		ipmmu-id = <RCAR_IPMMU_VI0 10>;
+//		iommus = <&ipmmu_vi0 10>, <&ipmmu_vi0 14>,
+//			 <&ipmmu_vi0 18>, <&ipmmu_vi0 22>,
+//			 <&ipmmu_vi0 26>;
+//	};
+//
+//	tisp0: tisp@fed00000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfed00000 0 0x10000>;
+//		interrupts = <GIC_SPI 473 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 612>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
+//		resets = <&cpg 612>;
+//		linux,uio-name = "tisp_00";
+//	};
+//
+//	cisp1: cisp@fee00000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfee00000 0 0x100000>;
+//		interrupts = <GIC_SPI 476 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 17>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
+//		resets = <&cpg 17>;
+//		linux,uio-name = "cisp_01";
+//		ipmmu-id = <RCAR_IPMMU_VI0 11>;
+//		iommus = <&ipmmu_vi0 11>, <&ipmmu_vi0 15>,
+//			 <&ipmmu_vi0 19>, <&ipmmu_vi0 23>,
+//			 <&ipmmu_vi0 27>; 
+//	};
+//
+//	tisp1: tisp@fed20000 {
+//		compatible = "generic-uio";
+//		reg = <0 0xfed20000 0 0x10000>;
+//		interrupts = <GIC_SPI 474 IRQ_TYPE_LEVEL_HIGH>;
+//		clocks = <&cpg CPG_MOD 613>;
+//		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
+//		resets = <&cpg 613>;
+//		linux,uio-name = "tisp_01";
+//	};
 
 /* vspx*u, fcpvxu* are used in ISP(Libcamera)
 	vspx0u: vspx@fedd0000 {
@@ -1983,7 +1975,7 @@
 		power-domains = <&sysc R8A779G0_PD_ALWAYS_ON>;
 		linux,uio-name = "post_fba_pap0";
 	};
-
+/*
 	fba_isp0: fba@feac1000 {
 		compatible = "generic-uio";
 		reg = <0 0xfeac1000 0 0x1000>;
@@ -2015,6 +2007,7 @@
 		power-domains = <&sysc R8A779G0_PD_ALWAYS_ON>;
 		linux,uio-name = "post_fba_isp1";
 	};
+*/
 
 	fba_ca76d0: fba@ff870000 {
 		compatible = "generic-uio";
@@ -3618,26 +3611,6 @@
 		compatible = "generic-uio";
 		reg = <0 0xe61bf000 0 0x1000>;
 		linux,uio-name = "otp_mem_01";
-	};
-
-	isp0: isp@fed00000 {
-		compatible = "renesas,isp-r8a779g0";
-		reg = <0 0xfed00000 0 0x10000>;
-		interrupts = <GIC_SPI 473 IRQ_TYPE_LEVEL_LOW>;
-		clocks = <&cpg CPG_MOD 612>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP0>;
-		resets = <&cpg 612>;
-		renesas,id = <0>;
-	};
-
-	isp1: isp@fed20000 {
-		compatible = "renesas,isp-r8a779g0";
-		reg = <0 0xfed20000 0 0x10000>;
-		interrupts = <GIC_SPI 474 IRQ_TYPE_LEVEL_LOW>;
-		clocks = <&cpg CPG_MOD 613>;
-		power-domains = <&sysc R8A779G0_PD_A3ISP1>;
-		resets = <&cpg 613>;
-		renesas,id = <1>;
 	};
 };
 
