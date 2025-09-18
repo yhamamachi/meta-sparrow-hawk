@@ -115,7 +115,7 @@ IMAGE_INSTALL:append = " git gcc g++ make curl cmake openssl libffi libnsl2"
 IMAGE_INSTALL:append = " binutils patch zlib-dev libffi-dev openssl-dev bzip2 readline sqlite3 ncurses tar patch "
 IMAGE_FEATURES += "dev-pkgs tools-sdk"
 IMAGE_INSTALL:append = " opencv"
-IMAGE_INSTALL:append = " zsh vim"
+IMAGE_INSTALL:append = " zsh vim libdrm-tests"
 # For HyCo self compile
 #IMAGE_INSTALL:append = " llvm llvm-dev llvm-staticdev"
 EOS
