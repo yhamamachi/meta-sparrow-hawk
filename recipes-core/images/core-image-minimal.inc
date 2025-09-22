@@ -34,6 +34,8 @@ IMAGE_INSTALL:append:sparrow-hawk = " \
     linux-fitimage \
     sparrow-hawk-fw \
     example-apps \
+    udev-rules \
+    bsp-config \
 "
 
 # Qos user packages only supports 64bit.
