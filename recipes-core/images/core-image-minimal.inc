@@ -27,6 +27,7 @@ IMAGE_INSTALL:append = " \
     libgpiod \
     python3-pip \
     python3-gpiod \
+    kernel-module-cmemdrv \
 "
 # Sparrow-hawk specific packages
 IMAGE_INSTALL:append:sparrow-hawk = " \
