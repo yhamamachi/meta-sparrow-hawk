@@ -26,6 +26,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://sparrow_hawk.cfg \
     file://sparrow-hawk-enable-i2c3-i2c4.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
+    file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 
 # Patchset for power management
@@ -75,6 +76,7 @@ module_conf_uio_pdrv_genirq:append = ' options uio_pdrv_genirq of_id="generic-ui
 
 do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
+    echo '#include "sparrow-hawk-uio.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
 }
 
 do_src_package_preprocess () {
@@ -105,3 +107,4 @@ do_deploy:append() {
         rm -f $deployDir/$dtb_base_name-${KERNEL_DTB_LINK_NAME}.$dtb_ext
     done
 }
+
