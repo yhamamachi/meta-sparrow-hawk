@@ -25,6 +25,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://0001-arm64-dts-renesas-sparrow-hawk-Enable-I2C3-I2C4.patch \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
     file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
+    file://sparrow-hawk-cmem.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 # Patchset for power management
 SRC_URI:append:sparrow-hawk = " \
