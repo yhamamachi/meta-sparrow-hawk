@@ -24,6 +24,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://sparrow_hawk.cfg \
     file://sparrow-hawk-enable-i2c3-i2c4.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
+    file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 # Add support Waveshare touchpanel
 SRC_URI:append:sparrow-hawk = " \
@@ -106,3 +107,4 @@ do_deploy:append() {
         rm -f $deployDir/$dtb_base_name-${KERNEL_DTB_LINK_NAME}.$dtb_ext
     done
 }
+
