@@ -24,6 +24,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://sparrow_hawk.cfg \
     file://0001-arm64-dts-renesas-sparrow-hawk-Enable-I2C3-I2C4.patch \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
+    file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 # Patchset for power management
 SRC_URI:append:sparrow-hawk = " \
@@ -91,3 +92,4 @@ do_deploy:append() {
         rm -f $deployDir/$dtb_base_name-${KERNEL_DTB_LINK_NAME}.$dtb_ext
     done
 }
+
