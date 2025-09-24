@@ -25,6 +25,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://sparrow-hawk-enable-i2c3-i2c4.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
     file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
+    file://sparrow-hawk-cmem.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 # Add support Waveshare touchpanel
 SRC_URI:append:sparrow-hawk = " \
