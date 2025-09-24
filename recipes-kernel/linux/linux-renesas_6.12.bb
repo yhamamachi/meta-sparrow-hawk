@@ -68,6 +68,10 @@ KERNEL_DEVICETREE:append:sparrow-hawk = " \
     renesas/r8a779g3-sparrow-hawk-rpi-display-2-5in.dtbo \
     renesas/r8a779g3-sparrow-hawk-rpi-display-2-7in.dtbo \
 "
+# uio_pdrv_genirq configuration
+KERNEL_MODULE_AUTOLOAD:append = " uio_pdrv_genirq"
+KERNEL_MODULE_PROBECONF:append = " uio_pdrv_genirq"
+module_conf_uio_pdrv_genirq:append = ' options uio_pdrv_genirq of_id="generic-uio"'
 
 do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
