@@ -25,6 +25,7 @@ IMAGE_INSTALL:append = " \
     kernel-modules \
     u-boot \
     libgpiod \
+    libdrm-tests \
     python3-pip \
     python3-gpiod \
     kernel-module-cmemdrv \
