@@ -128,7 +128,7 @@ jobs:
 
       - name: Run build
         run: |
-          ./build.sh --sbom --rm-work
+          ./build.sh --sbom --rm-work --sstate-mirror
 
       - name: Check disk
         run: |
