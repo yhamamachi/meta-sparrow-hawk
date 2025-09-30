@@ -54,7 +54,12 @@ SRC_URI:append:sparrow-hawk = " \
     file://uio/0014-uio-uio_pdrv_genirq-Add-parameter-error-in-case-not-.patch \
     file://uio/0015-WIP-Fix-build-error-on-kernel-6.12.patch \
 "
-
+# ISP patchset
+SRC_URI:append:sparrow-hawk = " \
+    file://0001-media-rppx1-Add-support-for-Bayer-Demosaicing.patch \
+    file://0002-media-rppx1-Add-support-for-Bilateral-Denoising.patch \
+    file://0003-media-rppx1-Backport-upstream-bug-fixes.patch \
+"
 
 
 KBUILD_DEFCONFIG:sparrow-hawk = "renesas_defconfig"
