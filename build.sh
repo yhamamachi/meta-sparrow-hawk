@@ -55,6 +55,7 @@ fi
 cd $WORK
 git clone git://git.yoctoproject.org/poky
 git clone git://git.openembedded.org/meta-openembedded
+git clone git://git.yoctoproject.org/meta-virtualization
 if [[ "${IS_BUILD_INSIDE_REPO}" == "yes" ]]; then
     rm -f meta-sparrow-hawk
     ln -sfd ${SCRIPT_DIR} meta-sparrow-hawk
@@ -64,6 +65,7 @@ fi
 
 git -C poky checkout -B scarthgap origin/scarthgap
 git -C meta-openembedded checkout -B scarthgap origin/scarthgap
+git -C meta-virtualization checkout -B scarthgap origin/scarthgap
 if [[ "${IS_BUILD_INSIDE_REPO}" == "no" ]]; then
     git -C meta-sparrow-hawk checkout -B scarthgap origin/scarthgap-dev
 fi
@@ -122,6 +124,14 @@ fi
 if [[ "${REMOVE_WORKDIR}" == "yes" ]]; then
     echo 'INHERIT += "rm_work"' >> conf/local.conf
 fi
+
+# docker support
+bitbake-layers add-layer ../meta-openembedded/meta-filesystems
+bitbake-layers add-layer ../meta-virtualization
+echo 'IMAGE_INSTALL:append = " docker docker-compose"' >> ./conf/local.conf
+echo 'DISTRO_FEATURES:append = " virtualization"' >> ./conf/local.conf
+echo 'DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"'  >> ./conf/local.conf
+echo 'VIRTUAL-RUNTIME:initscripts = "systemd-compat-units"' >> ./conf/local.conf
 
 bitbake ${TARGET_IMAGE}
 if [[ "${IS_BUILD_SDK}" == "yes" ]]; then
