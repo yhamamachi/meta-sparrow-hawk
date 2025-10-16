@@ -40,11 +40,8 @@ IMAGE_INSTALL:append:sparrow-hawk = " \
 "
 # For AI runtime
 IMAGE_INSTALL:append = "\
-    git gcc g++ make curl cmake openssl libffi libnsl2 \
-    binutils patch zlib-dev libffi-dev openssl-dev bzip2 \
-    readline sqlite3 ncurses tar patch opencv \
+    opencv \
 "
-IMAGE_FEATURES += "dev-pkgs tools-sdk"
 
 # Qos user packages only supports 64bit.
 QOS_USER_PKGS = ""
