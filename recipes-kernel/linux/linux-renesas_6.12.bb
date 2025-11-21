@@ -33,6 +33,8 @@ KERNEL_DEVICETREE:append:sparrow-hawk = " \
     renesas/r8a779g3-sparrow-hawk-camera-j2-imx219.dtbo \
     renesas/r8a779g3-sparrow-hawk-camera-j1-imx462.dtbo \
     renesas/r8a779g3-sparrow-hawk-camera-j2-imx462.dtbo \
+    renesas/r8a779g3-sparrow-hawk-camera-j1-imx708.dtbo \
+    renesas/r8a779g3-sparrow-hawk-camera-j2-imx708.dtbo \
     renesas/r8a779g3-sparrow-hawk-fan-pwm.dtbo \
     renesas/r8a779g3-sparrow-hawk-fan-argon40.dtbo \
     renesas/r8a779g3-sparrow-hawk-rpi-display-2-5in.dtbo \
