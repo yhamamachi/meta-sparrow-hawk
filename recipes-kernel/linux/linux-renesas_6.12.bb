@@ -26,6 +26,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://0002-HACK-drivers-gpu-drm-drm_file-Ingnore-flag-checking.patch \
     file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://sparrow-hawk-cmem.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
+    file://r8a779g3-sparrow-hawk-uio.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
 "
 # Add support Waveshare touchpanel
 SRC_URI:append:sparrow-hawk = " \
@@ -85,6 +86,8 @@ KERNEL_MODULE_AUTOLOAD:append = " uio_pdrv_genirq"
 KERNEL_MODULE_PROBECONF:append = " uio_pdrv_genirq"
 # nooelint: oelint.vars.mispell.unknown - This is general format for module_conf
 module_conf_uio_pdrv_genirq:append = " options uio_pdrv_genirq of_id=\"generic-uio\""
+KERNEL_DEVICETREE:append:sparrow-hawk = " renesas/r8a779g3-sparrow-hawk-uio.dtbo"
+KERNEL_DTC_FLAGS += "-@"
 
 do_compile:prepend:sparrow-hawk () {
     echo '#include "sparrow-hawk-enable-i2c3-i2c4.dtsi"' >>  ${S}/arch/arm64/boot/dts/renesas/r8a779g3-sparrow-hawk.dts
