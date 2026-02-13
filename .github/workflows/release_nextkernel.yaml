@@ -28,7 +28,7 @@ jobs:
 
           while true; do echo "[keepalive] $(date)"; sleep 60; done &
           #./build.sh --console --sbom --rm-work --next-kernel
-          nice -n 10 ionice -c2 -n7 ./build.sh -q --weston  --sbom --rm-work --next-kernel --sdk
+          ./build.sh -q --weston  --sbom --rm-work --next-kernel --sdk
 
       - name: Generate zip archive to release
         shell: bash
