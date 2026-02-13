@@ -16,6 +16,7 @@ REMOVE_WORKDIR=no
 IS_BUILD_INSIDE_REPO=yes
 IS_BUILD_SDK=no
 IS_QUIET_BUILD=no
+LIMIT_RESOURCE=no
 TEMPLATE_POSTFIX=""
 
 Usage () {
@@ -56,6 +57,8 @@ for arg in $@; do
         USE_NEXT_KERNEL=yes
     elif [[ "$arg" == "--build-rootfs-only" ]]; then
         BUILD_ROOTFS_ONLY=yes
+    elif [[ "$arg" == "--limit-resource" ]]; then
+        LIMIT_RESOURCE=yes
     fi
 done
 
@@ -142,6 +145,10 @@ fi
 QUIET_FLAG=""
 if [[ "${IS_QUIET_BUILD}" == "yes" ]]; then
     QUIET_FLAG="-q"
+fi
+
+if [[ "${LIMIT_RESOURCE}" == "yes" ]]; then
+    echo 'BB_PRESSURE_MAX_CPU = "20000"' >> conf/local.conf
 fi
 
 bitbake ${QUIET_FLAG} ${TARGET_IMAGE}
