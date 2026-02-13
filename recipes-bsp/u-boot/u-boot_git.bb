@@ -28,6 +28,15 @@ SRC_URI:append = "\
     file://0005-lmb-Reinstate-access-to-memory-above-ram_top.patch \
 "
 
+# Backport to support over 2GB files and RAM bank, and enable wget command
+SRC_URI:append = "\
+    file://0001-gunzip-Fix-len-parameter-in-function-signature.patch \
+    file://0002-net-Stop-conflating-return-value-with-file-size-in-n.patch \
+    file://0003-net-tftp-Fix-TFTP-Transfer-Size-data-type.patch \
+    file://0004-arm-renesas-Enable-wget-command-and-TCP-on-all-R-Car.patch \
+    file://0005-lmb-Reinstate-access-to-memory-above-ram_top.patch \
+"
+
 SRC_URI:append = "\
     file://nfs_cmd.cfg \
     file://mmc_boot.cfg \
