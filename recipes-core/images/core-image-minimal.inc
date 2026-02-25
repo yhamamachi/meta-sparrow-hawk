@@ -17,6 +17,7 @@ IMAGE_INSTALL:append:sparrow-hawk = " \
 # For AI runtime
 IMAGE_INSTALL:append = "\
     opencv \
+    libgomp \
 "
 
 # Installation for cmem kernel module
