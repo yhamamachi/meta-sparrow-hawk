@@ -12,7 +12,8 @@ jobs:
   Release:
     name: Release
     if: github.repository_owner == 'yhamamachi'
-    runs-on: ubuntu-24.04-arm
+    runs-on: [self-hosted, my-runner]
+    timeout-minutes: 720
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -24,8 +25,8 @@ jobs:
         shell: bash
         run: |
           # WA for Ubuntu 24.04
-          sudo sysctl -w kernel.unprivileged_userns_clone=1
-          sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
+          #sudo sysctl -w kernel.unprivileged_userns_clone=1
+          #sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
 
           while true; do echo "[keepalive] $(date)"; sleep 60; done &
           #./build.sh --console --sbom --rm-work
