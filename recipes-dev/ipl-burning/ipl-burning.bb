@@ -32,6 +32,8 @@ SRC_URI:append = " \
     ${PCIE_FIRMWARE_LIC} \
 "
 
+S = "${UNPACKDIR}"
+
 # do_configure() nothing
 do_configure[noexec] = "1"
 # do_compile() nothing
@@ -57,12 +59,12 @@ do_deploy() {
     install -m 0644 ${WORKDIR}/LICENSE.BSD-3-Clause ${DEPLOYDIR}/${PN}/License
 
     # Copy to deploy folder
-    install -m 0644 ${WORKDIR}/burn.py ${DEPLOYDIR}/${PN}
-    install -m 0644 ${WORKDIR}/ipl_burning.py ${DEPLOYDIR}/${PN}
-    install -m 0644 ${WORKDIR}/ipl_burning.json ${DEPLOYDIR}/${PN}
-    install -m 0755 ${WORKDIR}/run.sh ${DEPLOYDIR}/${PN}
-    install -m 0644 ${WORKDIR}/run.bat ${DEPLOYDIR}/${PN}
-    install -m 0644 ${WORKDIR}/Flash_writer_sparrow_hawk_CR52.mot ${DEPLOYDIR}/${PN}
+    install -m 0644 ${UNPACKDIR}/burn.py ${DEPLOYDIR}/${PN}
+    install -m 0644 ${UNPACKDIR}/ipl_burning.py ${DEPLOYDIR}/${PN}
+    install -m 0644 ${UNPACKDIR}/ipl_burning.json ${DEPLOYDIR}/${PN}
+    install -m 0755 ${UNPACKDIR}/run.sh ${DEPLOYDIR}/${PN}
+    install -m 0644 ${UNPACKDIR}/run.bat ${DEPLOYDIR}/${PN}
+    install -m 0644 ${UNPACKDIR}/Flash_writer_sparrow_hawk_CR52.mot ${DEPLOYDIR}/${PN}
     install -m 0644 ${DEPLOY_DIR}/images/${MACHINE}/flash.bin ${DEPLOYDIR}/${PN}
     cp -r  ${DEPLOY_DIR}/licenses/${MACHINE_LIC}/u-boot ${DEPLOYDIR}/${PN}/License/u-boot_licenses
     install -m 755 ${WORKDIR}/rcar_gen4_pcie.bin ${DEPLOYDIR}/${PN}
@@ -70,13 +72,13 @@ do_deploy() {
 
     # install embedded python binary for Windows environment
     PYTHON_DIR=${DEPLOYDIR}/${PN}/python-embed-amd64
-    cd ${WORKDIR}
+    cd ${UNPACKDIR}
     wget -qc https://www.python.org/ftp/python/3.13.4/python-3.13.4-embed-amd64.zip
     wget -qc https://bootstrap.pypa.io/get-pip.py
     install -d ${PYTHON_DIR}
-    unzip -qo ${WORKDIR}/python-3.13.4-embed-amd64.zip -d ${PYTHON_DIR}
+    unzip -qo ${UNPACKDIR}/python-3.13.4-embed-amd64.zip -d ${PYTHON_DIR}
     sed -i ${PYTHON_DIR}/*._pth -e "s/.*import site/import site/"
-    install -m 0644 ${WORKDIR}/get-pip.py ${PYTHON_DIR}
+    install -m 0644 ${UNPACKDIR}/get-pip.py ${PYTHON_DIR}
 }
 
 addtask deploy before do_build after do_compile

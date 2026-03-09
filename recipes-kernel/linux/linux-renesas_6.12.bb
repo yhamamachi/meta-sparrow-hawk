@@ -51,7 +51,6 @@ SRC_URI:append:sparrow-hawk = " \
     file://uio/0014-uio-uio_pdrv_genirq-Add-parameter-error-in-case-not-.patch \
     file://uio/0015-WIP-Fix-build-error-on-kernel-6.12.patch \
 "
-S = "${WORKDIR}/git"
 
 KERNEL_DEVICETREE:append:sparrow-hawk = " \
     renesas/r8a779g3-sparrow-hawk-camera-j1-imx219.dtbo \
