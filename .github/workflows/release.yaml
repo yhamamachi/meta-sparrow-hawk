@@ -28,6 +28,14 @@ jobs:
           restore-keys: |
             yocto-downloads-${{ runner.os }}-
 
+      - name: Restore Yocto sstate cache
+        uses: actions/cache@v4
+        with:
+          path: build/build-sparrow-hawk/sstate-cache
+          key: yocto-sstate-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            yocto-sstate-${{ runner.os }}-
+
       - name: Run build
         shell: bash
         run: |
