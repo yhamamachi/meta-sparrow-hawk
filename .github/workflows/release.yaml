@@ -11,7 +11,7 @@ on:
 jobs:
   Release:
     name: Release
-    if: github.repository_owner == 'rcar-community'
+    if: github.repository_owner == 'yhamamachi'
     runs-on: ubuntu-22.04-arm
     steps:
       - name: Checkout code
@@ -141,22 +141,4 @@ jobs:
             echo "PRERELEASE=false" >> $GITHUB_ENV
             echo "RELEASE_TITLE=Release ${{ env.TAG_NAME }}" >> $GITHUB_ENV
           fi
-
-      - name: Create/update release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ env.TAG_NAME }}
-          target_commitish: ${{ github.ref_name }}
-          name: ${{ env.RELEASE_TITLE }}
-          draft: false
-          prerelease: ${{ env.PRERELEASE }}
-          files: |
-            ./build/build-sparrow-hawk/tmp/deploy/images/deploy_sparrow-hawk.zip
-            ./build/build-sparrow-hawk/tmp/deploy/deploy_spdx_split.z*
-            ./build/build-sparrow-hawk/tmp/deploy/kernel_deb_package.zip
-            ./build/build-sparrow-hawk/tmp/deploy/ipl-burning.zip
-            ./build/build-sparrow-hawk/tmp/deploy/images/*/core-image-*-sparrow-hawk.rootfs.wic.*
-          body_path: ${{ github.workspace }}-release_msg.txt
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
