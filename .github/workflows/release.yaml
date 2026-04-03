@@ -1,17 +1,17 @@
 name: Relase Yocto BSP for Sparrow-hawk
 run-name: Release Yocto BSP for Sparrow-hawk
 on:
-  push:
-    branches:
-      - 'scarthgap'
-      - '*-dev'
-      - '*-next'
   workflow_dispatch:
+  workflow_run:
+    workflows:
+      - "Fetch source code"
+    types:
+      - completed
 
 jobs:
   Release:
     name: Release
-    if: github.repository_owner == 'yhamamachi'
+    if: github.repository_owner == 'yhamamachi' && github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-22.04-arm
     steps:
       - name: Checkout code
@@ -19,6 +19,14 @@ jobs:
 
       - name: Setup build envrionment
         uses: ./.github/workflows/setup_build_env
+
+      - name: Restore Yocto downloads cache
+        uses: actions/cache@v4
+        with:
+          path: build/build-sparrow-hawk/downloads
+          key: yocto-downloads-${{ runner.os }}-${{ hashFiles('build.sh') }}
+          restore-keys: |
+            yocto-downloads-${{ runner.os }}-
 
       - name: Run build
         shell: bash
