@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build/build-sparrow-hawk/downloads
-          key: yocto-downloads-${{ runner.os }}-${{ hashFiles('build.sh') }}
+          key: yocto-downloads-${{ runner.os }}-${{ github.sha }}
           restore-keys: |
             yocto-downloads-${{ runner.os }}-
 
