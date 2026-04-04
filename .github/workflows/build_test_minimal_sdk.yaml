@@ -1,11 +1,6 @@
 name: Build test minimal SDK for Sparrow-hawk
 run-name: Build test minimal SDK for Sparrow-hawk
 on:
-  push:
-    branches:
-      - 'scarthgap'
-      - '*-dev'
-      - '*-next'
   workflow_dispatch:
 
 jobs:
