@@ -39,4 +39,6 @@ jobs:
         shell: bash
         run: |
           ./build.sh --weston --sbom --rm-work --fetchall
+          # Remove large files for Github cache limit(<10GB)
+          rm -rf build/build-sparrow-hawk/downloads/git2/*opencv*
 
