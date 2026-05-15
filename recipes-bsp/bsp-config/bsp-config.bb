@@ -7,6 +7,6 @@ SRC_URI = " \
 
 do_install() {
     install -d ${D}${bindir}
-    install -m 755 ${S}/*.sh ${D}${bindir}/
+    install -m 755 ${UNPACKDIR}/*.sh ${D}${bindir}/
 }
 
