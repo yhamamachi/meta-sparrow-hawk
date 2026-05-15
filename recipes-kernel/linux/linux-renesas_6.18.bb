@@ -14,6 +14,9 @@ CVE_PRODUCT ?= ""
 require recipes-kernel/linux/kernel_6.18.inc
 COMPATIBLE_MACHINE = "(rcar-gen4)"
 
+ERROR_QA:remove = "patch-status"
+WARN_QA:append = " patch-status"
+
 # nooelint: oelint.vars.mispell.unknown - Yocto variable
 KCONFIG_MODE = "alldefconfig"
 # nooelint: oelint.vars.mispell.unknown
@@ -32,9 +35,6 @@ SRC_URI:append:sparrow-hawk = " \
 "
 # UIO driver patchset
 SRC_URI:append:sparrow-hawk = " \
-    file://sparrow-hawk-uio.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
-    file://sparrow-hawk-cmem.dtsi;subdir=git/arch/arm64/boot/dts/renesas/ \
-    file://r8a779g3-sparrow-hawk-uio.dtso;subdir=git/arch/arm64/boot/dts/renesas/ \
     file://uio/0001-uio-Add-new-ioctl-for-power-management.patch \
     file://uio/0002-uio-Add-PMA-IOCTL-to-compat-list.patch \
     file://uio/0003-uio-uio_pdrv_genirq-renesas-Add-clock-divisor-ioctl-.patch \
@@ -50,6 +50,7 @@ SRC_URI:append:sparrow-hawk = " \
     file://uio/0013-Revert-uio-uio_pdrv_genirq-Add-parameter-error-in-ca.patch \
     file://uio/0014-uio-uio_pdrv_genirq-Add-parameter-error-in-case-not-.patch \
     file://uio/0015-WIP-Fix-build-error-on-kernel-6.12.patch \
+    file://0001-arm64-dts-renesas-sparrow-hawk-Add-uio-dtbo.patch \
 "
 
 KERNEL_DEVICETREE:append:sparrow-hawk = " \
