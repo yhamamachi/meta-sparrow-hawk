@@ -1,0 +1,8 @@
+header:
+  version: 1
+  includes:
+    - conf/kas/weston.yaml
+
+target: core-image-weston-sdk
+task: populate_sdk
+

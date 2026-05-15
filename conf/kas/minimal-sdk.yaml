@@ -1,0 +1,8 @@
+header:
+  version: 1
+  includes:
+    - conf/kas/minimal.yaml
+
+target: core-image-minimal-sdk
+task: populate_sdk
+
