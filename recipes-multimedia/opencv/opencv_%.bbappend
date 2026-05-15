@@ -1,3 +1,3 @@
 PACKAGECONFIG:append = " gtk"
-PACKAGECONFIG:append = " opencl"
-PACKAGECONFIG:append = " dnn"
+#PACKAGECONFIG:append = " opencl"
+#PACKAGECONFIG:append = " dnn"
