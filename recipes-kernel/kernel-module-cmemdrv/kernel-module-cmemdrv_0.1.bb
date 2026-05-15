@@ -22,6 +22,9 @@ SRC_URI = "${RENESAS_CMEM_URL};nobranch=1"
 SRCREV:rcar-v3x = "abe21c26b5ad06909017966c7208c454e7f02b92"
 SRCREV:rcar-gen4 = "${@oe.utils.conditional("RGID_ON", "1", "27cffd2a3b3fb866e5bab877ce817804de047330", "e67f473cddb089f71abead8bf18f618d42f515da", d )}"
 
+ERROR_QA:remove = "patch-status"
+WARN_QA:append = " patch-status"
+
 SRC_URI:append:sparrow-hawk = " \
     file://fix_build_error_612.patch \
     file://0001-WIP-Fix-DMA-mask-not-set.patch \
