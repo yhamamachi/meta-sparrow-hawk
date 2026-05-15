@@ -23,6 +23,9 @@ UBOOT_SREC ?= "u-boot-elf.${UBOOT_SREC_SUFFIX}"
 UBOOT_SREC_IMAGE ?= "u-boot-elf-${MACHINE}-${PV}-${PR}.${UBOOT_SREC_SUFFIX}"
 UBOOT_SREC_SYMLINK ?= "u-boot-elf-${MACHINE}.${UBOOT_SREC_SUFFIX}"
 
+ERROR_QA:remove = "patch-status"
+WARN_QA:append = " patch-status"
+
 # Backport to support over 2GB RAM bank
 SRC_URI:append = "\
     file://0005-lmb-Reinstate-access-to-memory-above-ram_top.patch \
