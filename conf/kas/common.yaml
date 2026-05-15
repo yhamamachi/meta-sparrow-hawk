@@ -16,7 +16,7 @@ local_conf_header:
     MACHINE ??= "sparrow-hawk"
     DISTRO ?= "poky"
     PACKAGE_CLASSES ?= "package_deb"
-    EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+    EXTRA_IMAGE_FEATURES ?= "allow-empty-password empty-root-password allow-root-login"
     USER_CLASSES ?= "buildstats"
     PATCHRESOLVE = "noop"
     BB_DISKMON_DIRS ??= "\
@@ -29,8 +29,7 @@ local_conf_header:
       HALT,${SSTATE_DIR},100M,1K \
       HALT,/tmp,10M,1K"
     PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
-    DISTRO_FEATURES:append = " usrmerge systemd"
-    VIRTUAL-RUNTIME_init_manager = "systemd"
+    INIT_MANAGER = "systemd"
 
     # add the static lib to SDK toolchain
     SDKIMAGE_FEATURES:append = " staticdev-pkgs"
@@ -62,20 +61,34 @@ repos:
   meta-custom:
   # Here we include a list of layers from the poky repository to the
   # bblayers.conf:
-  poky:
-    path: layers/poky
-    url: "https://git.yoctoproject.org/git/poky"
-    branch: scarthgap
+  openembedded-core:
+    path: layers/openembedded-core
+    url: "https://git.openembedded.org/openembedded-core"
+    tag: yocto-6.0
     #commit:
     layers:
       meta:
+
+  bitbake:
+    path: layers/bitbake
+    url: "https://git.openembedded.org/bitbake"
+    tag: yocto-6.0
+    #commit:
+    layers: {}
+
+  meta-yocto:
+    path: layers/meta-yocto
+    url: "https://git.yoctoproject.org/meta-yocto"
+    tag: yocto-6.0
+    #commit:
+    layers:
       meta-poky:
       meta-yocto-bsp:
 
   meta-openembedded:
     path: layers/meta-openembedded
     url: "https://git.openembedded.org/meta-openembedded"
-    branch: scarthgap
+    branch: wrynose
     #commit:
     layers:
       meta-oe:
