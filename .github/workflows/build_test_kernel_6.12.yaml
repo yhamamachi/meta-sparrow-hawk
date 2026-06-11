@@ -26,3 +26,9 @@ jobs:
           ./build.sh --console --sbom --rm-work --kernel-version 6.12
           ./build.sh --weston  --sbom --rm-work --kernel-version 6.12
 
+      - name: Check build results
+        shell: bash
+        run: |
+          ls -la ./build/build-sparrow-hawk/tmp/deploy/images/sparrow-hawk/*
+          #ls -la ./build/build-sparrow-hawk/tmp/deploy/sdk/*
+

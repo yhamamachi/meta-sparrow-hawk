@@ -24,5 +24,10 @@ jobs:
         shell: bash
         run: |
           ./build.sh --console --sbom --rm-work --kernel-version dummy
-          # ./build.sh --weston --sbom --rm-work --build-rootfs-only
+
+      - name: Check build results
+        shell: bash
+        run: |
+          ls -la ./build/build-sparrow-hawk/tmp/deploy/images/sparrow-hawk/*
+          #ls -la ./build/build-sparrow-hawk/tmp/deploy/sdk/*
 

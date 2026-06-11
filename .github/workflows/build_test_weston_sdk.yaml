@@ -25,3 +25,9 @@ jobs:
         run: |
           ./build.sh --weston --sbom --rm-work --sdk
 
+      - name: Check build results
+        shell: bash
+        run: |
+          #ls -la ./build/build-sparrow-hawk/tmp/deploy/images/sparrow-hawk/*
+          ls -la ./build/build-sparrow-hawk/tmp/deploy/sdk/*
+
