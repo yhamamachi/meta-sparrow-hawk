@@ -23,7 +23,7 @@ jobs:
       - name: Run build
         shell: bash
         run: |
-          ./build.sh --weston --sbom --rm-work --sdk
+          ./build.sh --weston --rm-work --sdk
 
       - name: Check build results
         shell: bash
