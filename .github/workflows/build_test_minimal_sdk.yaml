@@ -12,7 +12,7 @@ jobs:
   Release:
     name: Release
     if: github.repository_owner == 'yhamamachi'
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
