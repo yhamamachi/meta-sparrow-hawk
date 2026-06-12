@@ -88,6 +88,7 @@ runs:
         df -h
 
     - name: Mount addtional disk
+      if: runner.arch == 'ARM64'
       shell: bash
       run: |
         sudo parted /dev/nvme0n1 --script mklabel gpt mkpart primary ext4 0% 100%
