@@ -27,5 +27,4 @@ RDEPENDS:packagegroup-opencv-sdk = " \
     libopencv-videostab \
     opencv \
     opencv-apps \
-    opencv-dbg \
 "
