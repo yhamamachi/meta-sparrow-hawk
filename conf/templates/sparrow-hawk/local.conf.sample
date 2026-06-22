@@ -306,3 +306,8 @@ LINUXLIBCVERSION = "6.18%"
 PREFERRED_VERSION_linux-libc-headers = "6.6"
 PREFERRED_VERSION_nativesdk-linux-libc-headers = "6.6"
 
+# Reduce fetch size
+BB_GIT_SHALLOW = "1"
+BB_GENERATE_MIRROR_TARBALLS = "1"
+BB_GIT_SHALLOW_DEPTH = "1"
+

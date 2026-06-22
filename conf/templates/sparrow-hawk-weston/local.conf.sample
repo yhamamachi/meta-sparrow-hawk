@@ -318,3 +318,9 @@ PREFERRED_VERSION_nativesdk-linux-libc-headers = "6.6"
 # Set Timestamps at the build start
 export SOURCE_DATE_EPOCH = "${@time.strftime('%s', time.localtime())}"
 REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s', time.localtime())}"
+
+# Reduce fetch size
+BB_GIT_SHALLOW = "1"
+BB_GENERATE_MIRROR_TARBALLS = "1"
+BB_GIT_SHALLOW_DEPTH = "1"
+
