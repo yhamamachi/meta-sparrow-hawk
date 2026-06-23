@@ -321,6 +321,5 @@ REPRODUCIBLE_TIMESTAMP_ROOTFS = "${@time.strftime('%s', time.localtime())}"
 
 # Reduce fetch size
 BB_GIT_SHALLOW = "1"
-BB_GENERATE_MIRROR_TARBALLS = "1"
 BB_GIT_SHALLOW_DEPTH = "1"
 
