@@ -30,8 +30,8 @@ jobs:
             sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
           fi
 
-          ./build.sh --console --sbom --rm-work --quiet
-          ./build.sh --weston --sbom --rm-work --quiet
+          ./build.sh --console --sbom --rm-work
+          ./build.sh --weston --sbom --rm-work
 
       - name: Generate zip archive to release
         shell: bash
