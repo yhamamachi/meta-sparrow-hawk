@@ -120,8 +120,6 @@ SPDX_INCLUDE_SOURCES = "1"
 # optional. if "1", bitbake will create source files archive for each package.
 SPDX_ARCHIVE_SOURCES = "1"
 
-# optional. if "1", bitbake will create output binary archive for each package.
-SPDX_ARCHIVE_PACKAGED = "1"
 EOS
 else # Disable SBOM build to reduce build time
 cat << EOS >> conf/local.conf
