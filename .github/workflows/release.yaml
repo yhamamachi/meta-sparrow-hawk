@@ -34,8 +34,8 @@ jobs:
             sudo apparmor_parser -R /etc/apparmor.d/unprivileged_userns
           fi
 
-          ./build.sh --console --sbom --rm-work
-          ./build.sh --weston --sbom --rm-work
+          ./build.sh --console --sbom --rm-work --sstate-mirror
+          ./build.sh --weston --sbom --rm-work --sstate-mirror
 
       - name: Generate zip archive to release
         shell: bash
