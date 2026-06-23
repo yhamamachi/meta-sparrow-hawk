@@ -33,7 +33,6 @@ DEPENDS:packagegroup-graphics-renesas-wayland = "libegl libgles2"
 
 RDEPENDS:packagegroup-graphics-renesas-wayland = " \
     libgbm \
-    libgbm-dev \
     wayland-kms \
     wayland-wsegl \
     libdrm-kms \
