@@ -98,7 +98,7 @@ runs:
     - name: Maximize GitHub Runner Space
       uses: justinthelaw/maximize-github-runner-space@v0.10.0
       with:
-        swapfile-size: 20G
+        swapfile-size: 8G
         cleanup-profile: max
 
     - name: Checkout repository
